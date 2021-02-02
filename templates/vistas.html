@@ -1,0 +1,39 @@
+{% extends 'bootstrap/base.html' %}
+{% block title %}
+  "CREAGE"
+{% endblock %}
+
+{% block body %}
+<div align="center">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col"># usuario</th>
+        <th scope="col">Nombre</th>
+      </tr>
+    </thead>
+    <tbody>
+      <h1>AGENDAS REGISTRADAS</h1>
+      <h1> </h1>
+      <h1> </h1>
+      {% for resultado in variable %}
+      <tr>
+        <th scope="row">{{resultado.id}}</th>
+        <td>{{resultado.id_usuario}}</td>
+        <td>{{resultado.nombre_agenda}}</td>
+        <td>
+          <a href="/nuevocontacto/{{resultado.id}}/{{resultado.nombre_agenda}}"class="btn btn-warning btn-xs">Crear Contacto</a>
+          <a href="/muestra/{{resultado.id}}/{{resultado.nombre_agenda}}"class="btn btn-warning btn-xs">Ver Contactos</a>
+        </td>
+      </tr>
+      {% endfor %}
+     </tbody>
+  </table>
+  <h1></h1>
+  <form action="/principal" method="POST" align="center">
+    <input type="submit" class="btn btn-primary" value="Menú Principal">
+  </form>
+</div>
+
+{% endblock %}

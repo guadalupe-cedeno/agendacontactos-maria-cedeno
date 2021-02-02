@@ -1,0 +1,58 @@
+{% extends 'bootstrap/base.html' %}
+{% block title %}
+  "CREAGE"
+{% endblock%}
+{% block body %}
+
+<div class="row" align="center">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8" style="podding-top: 5%;">
+      <form action="{{ url_for('actualizar') }}" method="POST" class="form-horizontal" style="margin:0 auto">
+        <div class="form-group">
+          <h1></h1>
+            <input type="hidden" name="id" id="id" value="{{ contactos.id }}">
+            <label for="nombreE" class="col-lg-2 control-label">Nuevo nombre</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" name="nombreE" id="nombreE" value="{{ contactos.nombre }}"/>
+            </div>
+        </div>
+        <div class="form-group">
+          <label for="apellidoE" class="col-lg-2 control-label">Nuevo Apellido</label>
+          <br>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" name="apellidoE" id="apellidoE" value="{{ contactos.apellido}}"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="correoE" class="col-lg-2 control-label">Nuevo Correo</label>
+          <br>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" name="correoE" id="correoE" value="{{ contactos.correo}}"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="telefonoE" class="col-lg-2 control-label">Nuevo Teléfono</label>
+          <br>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" name="telefonoE" id="telefonoE" value="{{ contactos.telefono}}"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="direccionE" class="col-lg-2 control-label">Nueva Dirección</label>
+          <br>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" name="direccionE" id="direccionE" value="{{ contactos.direccion}}"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-2">
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <a href="/vistas" type="button" class="btn btn-success" style="margin-top: 3%;">Cancelar</a>
+          </div>
+        </div>
+       </form>
+    </div>
+      <div class="col-lg-2"></div>
+    </div>
+    <p>{{mensaje}}</p>
+{% endblock %}

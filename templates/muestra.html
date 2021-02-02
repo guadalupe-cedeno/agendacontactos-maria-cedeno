@@ -1,0 +1,46 @@
+{% extends 'bootstrap/base.html' %}
+{% block title %}
+  "CREAGE"
+{% endblock %}
+
+{% block body %}
+<div align="center">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col"># agenda</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Correo Electrónico</th>
+        <th scope="col">Teléfono</th>
+        <th scope="col">Dirección</th>
+      </tr>
+    </thead>
+    <tbody>
+      <h1>CONTACTOS REGISTRADOS</h1>
+      <h1> </h1>
+      <h1> </h1>
+      {% for resultado in variable %}
+      <tr>
+        <th scope="row">{{resultado.id}}</th>
+        <td>{{resultado.id_agenda}}</td>
+        <td>{{resultado.nombre}}</td>
+        <td>{{resultado.apellido}}</td>
+        <td>{{resultado.correo}}</td>
+        <td>{{resultado.telefono}}</td>
+        <td>{{resultado.direccion}}</td>
+        <td>
+          <a href="/editar/{{resultado.id}}" class="btn btn-warning btn-xs">Editar</a>
+          <a href="/eliminar/{{resultado.id}}" class="btn btn-warning btn-xs">Eliminar</a>
+        </td>
+      </tr>
+      {% endfor %}
+     </tbody>
+  </table>
+  <form action="/vistas" method="POST" align="center">
+    <input type="submit" class="btn btn-primary" value="Regresar">
+  </form>
+</div>
+
+{% endblock %}

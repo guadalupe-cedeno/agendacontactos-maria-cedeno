@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>"CREAGE"</title>
+  </head>
+  <body>
+    <!-- aqui se va a agregar un bienvenido (nombre del usuario)-->
+    <h1 align="center">BIENVENIDO A TU REPOSITORIO</h1>
+    <p align="center">
+      <img src={{url_for('static', filename="fondo.jpg")}}>
+    </p>
+    <div class="container">
+        <form action="/nuevagenda" method="GET" align="center">
+          <input type="submit" class="btn btn-primary" value="Crear Agenda" style="position: middle;top: 40%;">
+        </form>
+        <h1></h1>
+        <form action="/vistas" method="GET" align="center">
+          <input type="submit" class="btn btn-primary" value="Ver Agendas" style="position: middle;top: 50%;">
+        </form>
+        <h1></h1>
+        <form action="/logout" method="GET" align="right">
+          <input type="submit" class="btn btn-primary" value="Cerrar Sesión">
+        </form>
+
+    </div>
+  </body>
+</html>

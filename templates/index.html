@@ -1,0 +1,32 @@
+{% extends 'bootstrap/base.html' %}
+{% block title %}
+  "CREAGE"
+{% endblock%}
+{% block body %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+    </title>
+  </head>
+  <body align="center">
+    <h1> MENÚ PRINCIPAL </h1>
+    <h4>"CREAGE es una aplicación dirigida al almacenamiento de información personal como lo son los contactos,</h4>
+    <h4>los cuales son registrados dentro de agendas, las cuáles son capaces de ser clasificadas</h4>
+    <h4>dependiendo de la informacíon que valla ser asignada.</h4>
+    <h4>Además de poder editar y eliminar tus contactos en cualquier momento".</h4>
+    </br>
+    <p>
+      <img src={{url_for('static', filename="age.jpg")}}>
+    </p>
+    <form action="/registrar" method="GET">
+      <input type="submit" class="btn btn-primary" value="Registrarse">
+    </form>
+    <h1></h1>
+    <form action="/acceder" method="GET">
+      <input type="submit" class="btn btn-primary" value="Iniciar Sesión">
+    </form>
+
+  </body>
+</html>
+{% endblock %}
