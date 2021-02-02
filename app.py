@@ -81,18 +81,14 @@ def registrar():
         campo_usuario = request.form["email"]
         campo_passw = request.form["pswd"]
         user = Usuario(usuario=campo_usuario,password=bcrypt.generate_password_hash(campo_passw).decode('utf-8'))
-        if user == user:
-            mensaje="El usuario ya existe, intente de nuevo"
-            return render_template("registrar.html", mensaje=mensaje)
-        else:
-            db.session.add(user)
-            db.session.commit()
-            mensaje="Registrado con Éxito"
-            msg = Message("Gracias por Registrarte", sender="17460080@colima.tecnm.mx", recipients=[campo_usuario])
-            msg.body = "Este es un email de prueba"
-            msg.html = "<p>Este es un email</p>"
-            mail.send(msg)
-            return render_template("registrar.html", mensaje=mensaje)
+        db.session.add(user)
+        db.session.commit()
+        mensaje="Registrado con Éxito"
+        msg = Message("Gracias por Registrarte", sender="17460080@colima.tecnm.mx", recipients=[campo_usuario])
+        msg.body = "Este es un email de prueba"
+        msg.html = "<p>Este es un email</p>"
+        mail.send(msg)
+        return render_template("registrar.html", mensaje=mensaje)
     else:
         return render_template("registrar.html")
 
