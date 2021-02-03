@@ -81,7 +81,7 @@ def registrar():
         campo_usuario = request.form["email"]
         campo_passw = request.form["pswd"]
         #password=bcrypt.generate_password_hash(campo_passw).decode('utf-8')
-        consulta=Usuario.query.filter_by(usuario=campo_usuario).first()
+        consulta = Usuario.query.filter_by(usuario=campo_usuario).first()
         if consulta is not None:
             mensaje="Usuario ya existente"
             return render_template("registrar.html", mensaje=mensaje)
