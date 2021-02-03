@@ -80,17 +80,22 @@ def registrar():
     if request.method == 'POST':
         campo_usuario = request.form["email"]
         campo_passw = request.form["pswd"]
-        user = Usuario(usuario=campo_usuario,password=bcrypt.generate_password_hash(campo_passw).decode('utf-8'))
-        db.session.add(user)
-        db.session.commit()
-        mensaje="Registrado con Éxito"
-        msg = Message("Gracias por Registrarte", sender="17460080@colima.tecnm.mx", recipients=[campo_usuario])
-        msg.body = "Este es un email de prueba"
-        msg.html = "<p>Este es un email</p>"
-        mail.send(msg)
-        return render_template("registrar.html", mensaje=mensaje)
-    else:
-        return render_template("registrar.html")
+        #password=bcrypt.generate_password_hash(campo_passw).decode('utf-8')
+        consulta=Usuario.query.filter_by(usuario=campo_usuario).first()
+        if consulta is not None:
+            mensaje="Usuario ya existente"
+            return render_template("registrar.html", mensaje=mensaje)
+        else:
+            user = Usuario(usuario=campo_usuario,password=bcrypt.generate_password_hash(campo_passw).decode('utf-8'))
+            db.session.add(user)
+            db.session.commit()
+            mensaje="Registrado con Éxito"
+            msg = Message("Gracias por Registrarte", sender="17460080@colima.tecnm.mx", recipients=[campo_usuario])
+            msg.body = "Este es un email de prueba"
+            msg.html = "<p>Este es un email</p>"
+            mail.send(msg)
+            return render_template("registrar.html", mensaje=mensaje)
+    return render_template("registrar.html")
 
 @app.route('/acceder', methods=['GET', 'POST'])
 #tengo pendiente la validacion de si el correo no coincide
